@@ -1,254 +1,141 @@
 @import '../../styles/variables';
-@import '../../styles/mixins';
 
 .blacklistManagement {
-  padding: 20px;
+  padding: $spacing-large;
 }
 
 .controls {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-  flex-wrap: wrap; // Allow wrapping on smaller screens
-  gap: 20px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: $spacing-medium;
+  margin-bottom: $spacing-large;
+}
+
+.searchAndFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-medium;
+  align-items: flex-end;
 }
 
 .searchBar {
-  flex-grow: 1;
-  max-width: 400px;
-  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba($color-primary-accent, 0.3);
+  border-radius: $border-radius-medium;
+  padding: 0.4rem 0.8rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 
-  .searchIcon {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: $text-secondary;
-    font-size: 1.5rem;
-  }
-
-  input[type="text"] {
-    width: 100%;
-    padding: 12px 15px 12px 50px;
-    border-radius: $border-radius-small;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background-color: rgba($color-frosted-glass-bg, 0.05);
-    color: $text-primary;
-    font-size: 1rem;
+  input {
+    border: none;
+    background: transparent;
     outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
-    &:focus {
-      border-color: $color-primary-accent;
-      box-shadow: 0 0 8px rgba($color-primary-accent, 0.4);
-    }
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    color: $text-primary;
+    width: 200px;
 
     &::placeholder {
-      color: $text-secondary;
-      opacity: 0.7;
+      color: rgba($text-primary, 0.5);
     }
+  }
+
+  .searchIcon {
+    color: $color-primary-accent;
   }
 }
 
 .filters {
   display: flex;
-  gap: 20px;
+  gap: $spacing-medium;
   flex-wrap: wrap;
+}
 
-  .filterGroup {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
 
-    .filterIcon {
-      font-size: 1.4rem;
-      color: $color-primary-accent;
-    }
+  label {
+    margin-bottom: 0.25rem;
+    color: $text-primary;
+    font-weight: 500;
+  }
 
-    label {
-      color: $text-secondary;
-      font-weight: 500;
-    }
+  select {
+    padding: 0.4rem 0.6rem;
+    border-radius: $border-radius-small;
+    border: 1px solid rgba($text-primary, 0.2);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: $text-primary;
+    font-size: 0.95rem;
+    transition: border 0.2s ease;
 
-    select {
-      padding: 10px 15px;
-      border-radius: $border-radius-small;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background-color: rgba($color-frosted-glass-bg, 0.05);
-      color: $text-primary;
-      font-size: 1rem;
+    &:focus {
+      border-color: $color-primary-accent;
       outline: none;
-      cursor: pointer;
-      appearance: none; // Remove default arrow
-      background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23cccccc%22%20d%3D%22M287%2069.9L146.2%20208.5%205.4%2069.9c-1.8-1.8-4.7-1.8-6.5%200-1.8%201.8-1.8%204.7%200%206.5L142.9%20218c1.8%201.8%204.7%201.8%206.5%200l140.2-141.6c1.8-1.8%201.8-4.7%200-6.5-1.8-1.8-4.6-1.8-6.4%200z%22%2F%3E%3C%2Fsvg%3E');
-      background-repeat: no-repeat;
-      background-position: right 10px top 50%;
-      background-size: 12px auto;
-
-      &:focus {
-        border-color: $color-primary-accent;
-        box-shadow: 0 0 8px rgba($color-primary-accent, 0.4);
-      }
-
-      option {
-        background-color: $color-background;
-        color: $text-primary;
-      }
     }
   }
 }
 
 .addButton {
-  padding: 12px 25px;
-  background-color: rgba($color-success-emerald-green, 0.8);
-  color: $text-primary;
-  border: none;
-  border-radius: $border-radius-small;
+  background-color: $color-primary-accent;
+  color: white;
   font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: $border-radius-medium;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
 
   &:hover {
-    background-color: $color-success-emerald-green;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba($color-success-emerald-green, 0.4);
+    background-color: darken($color-primary-accent, 10%);
   }
 }
 
-.blacklistGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 25px;
+.tableContainer {
+  overflow-x: auto;
+  margin-top: $spacing-medium;
 }
 
-.noEntries {
-  grid-column: 1 / -1; // Span across all columns
-  text-align: center;
-  padding: 50px;
-  background-color: rgba($color-frosted-glass-bg, 0.05);
-  color: $text-secondary;
-  font-style: italic;
-  font-size: 1.1rem;
-}
-
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
+.blacklistTable {
   width: 100%;
-  height: 100%;
-  background-color: rgba($color-jet-black, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  @include fade-in;
-}
+  border-collapse: collapse;
+  background-color: 0, 0, 0;
 
-.addBlacklistModal {
-  padding: 30px;
-  background-color: rgba($color-frosted-glass-bg, 0.1);
-  border-radius: $border-radius-large;
-  box-shadow: $shadow-deep;
-  max-width: 600px;
-  width: 90%;
-  position: relative;
-  @include slide-in-top;
-
-  .modalTitle {
-    font-size: 2rem;
+  th,
+  td {
+    padding: $spacing-small $spacing-medium;
+    text-align: left;
+    border-bottom: 1px solid rgba($text-primary, 0.1);
     color: $text-primary;
-    margin-bottom: 30px;
-    font-weight: 700;
-    text-align: center;
   }
 
-  .addForm {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  th {
+    background-color: rgba($color-primary-accent, 0.08);
+    font-weight: 600;
+  }
 
-    .formGroup {
-      display: flex;
-      flex-direction: column;
+  tr:hover {
+    background-color: rgba($color-primary-accent, 0.05);
+  }
+}
 
-      label {
-        color: $text-secondary;
-        margin-bottom: 8px;
-        font-weight: 500;
-        font-size: 0.95rem;
-      }
+.tableActionBtn {
+  margin-right: $spacing-small;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: $border-radius-small;
+  background-color: rgba($color-info-buttons-slate-gray, 0.7);
+  color: $text-primary;
+  cursor: pointer;
 
-      input, select {
-        padding: 12px 15px;
-        border-radius: $border-radius-small;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background-color: rgba($color-frosted-glass-bg, 0.05);
-        color: $text-primary;
-        font-size: 1rem;
-        outline: none;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
-        &:focus {
-          border-color: $color-primary-accent;
-          box-shadow: 0 0 8px rgba($color-primary-accent, 0.4);
-        }
-
-        &::placeholder {
-          color: $text-secondary;
-          opacity: 0.7;
-        }
-
-        option {
-          background-color: $color-background;
-          color: $text-primary;
-        }
-      }
-
-      select {
-        appearance: none;
-        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23cccccc%22%20d%3D%22M287%2069.9L146.2%20208.5%205.4%2069.9c-1.8-1.8-4.7-1.8-6.5%200-1.8%201.8-1.8%204.7%200%206.5L142.9%20218c1.8%201.8%204.7%201.8%206.5%200l140.2-141.6c1.8-1.8%201.8-4.7%200-6.5-1.8-1.8-4.6-1.8-6.4%200z%22%2F%3E%3C%2Fsvg%3E');
-        background-repeat: no-repeat;
-        background-position: right 15px top 50%;
-        background-size: 12px auto;
-      }
-    }
-
-    .formActions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 15px;
-      margin-top: 20px;
-
-      button {
-        padding: 12px 25px;
-        border: none;
-        border-radius: $border-radius-small;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 1rem;
-        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-        color: $text-primary;
-      }
-
-      .cancelButton {
-        background-color: rgba($color-info-buttons-slate-gray, 0.7);
-        &:hover {
-          background-color: $color-info-buttons-slate-gray;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 10px rgba($color-info-buttons-slate-gray, 0.4);
-        }
-      }
-
-      .submitButton {
-        background-color: rgba($color-success-emerald-green, 0.8);
-        &:hover {
-          background-color: $color-success-emerald-green;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 10px rgba($color-success-emerald-green, 0.4);
-        }
-      }
-    }
+  &:hover {
+    background-color: $color-info-buttons-slate-gray;
   }
 }
