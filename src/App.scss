@@ -1,0 +1,111 @@
+@import './styles/variables';
+@import './styles/global'; // Import global styles here
+
+.app {
+  display: flex;
+  min-height: 100vh;
+  background: url('./assets/img/bg4.jpg');
+  color: $text-primary;
+}
+
+.mainLayout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: url('./assets/img/bg4.jpg'); // Main content background
+  margin-left: $sidebar-width;
+}
+
+.mainContentArea {
+  flex-grow: 1;
+  padding: 20px 30px;
+  overflow-y: auto; // Enable scrolling for content
+}
+
+// Responsive adjustments
+@media (max-width: 1024px) {
+  .mainLayout {
+    margin-left: 0;
+  }
+
+  .sidebar {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px;
+  }
+
+  .topbar {
+    padding: 15px 20px;
+  }
+
+  .dashboard {
+    .statsGrid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+  }
+
+  .blacklistManagement, .employeeDirectory {
+    .controls {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    .searchBar {
+      max-width: 100%;
+      width: 100%;
+    }
+    .filters {
+      flex-direction: column;
+      width: 100%;
+      gap: 15px;
+    }
+    .filterGroup {
+      width: 100%;
+      label, select {
+        width: 100%;
+      }
+    }
+    .addButton {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .topbar {
+    .pageTitle {
+      font-size: 1.5rem;
+    }
+    .profileName {
+      display: none; // Hide name on very small screens
+    }
+  }
+
+  .dashboard {
+    .statCard {
+      padding: 20px;
+      .statIcon { font-size: 3rem; }
+      .statValue { font-size: 3rem; }
+      .statLabel { font-size: 1rem; }
+    }
+  }
+
+  .blacklistManagement, .employeeDirectory {
+    .blacklistGrid, .employeeGrid {
+      grid-template-columns: 1fr; // Single column layout
+    }
+    .addBlacklistModal, .addEmployeeModal {
+      padding: 20px;
+    }
+  }
+
+  .modalContent {
+    width: 95%;
+  }
+}

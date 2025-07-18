@@ -1,0 +1,78 @@
+@import '../../styles/variables';
+
+.topbar {
+  grid-area: topbar;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: transparent; // No direct background, content area handles it
+  color: $text-primary;
+  margin-bottom: 20px; // Spacing below top bar
+  // backdrop-filter: blur(5px); // Subtle blur for the bar itself
+  // -webkit-backdrop-filter: blur(5px); // For Safari
+}
+
+.pageTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: $text-primary;
+  letter-spacing: 0.5px;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.themeToggle {
+  background: none;
+  border: none;
+  color: $text-secondary;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex; // To center icon
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $color-primary-accent;
+  }
+}
+
+.profileSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: $border-radius-small;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba($color-frosted-glass-bg, 0.05);
+  }
+
+  .profileIcon {
+    font-size: 2rem;
+    color: $color-primary-accent;
+  }
+
+  .profileName {
+    font-weight: 500;
+    color: $text-primary;
+  }
+
+  .settingsIcon {
+    font-size: 1.2rem;
+    color: $text-secondary;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: rotate(30deg);
+    }
+  }
+}

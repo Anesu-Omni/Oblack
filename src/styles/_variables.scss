@@ -1,0 +1,34 @@
+// Color Palette
+$color-primary-accent: #FF3B3F; // Scarlet Red (Alerts, primary action) - Adjusted for prominence
+$color-jet-black: #0E0E10; // Base background - Adjusted to match screenshots
+$color-background: #1A1A1D; // Charcoal (Main background) - Adjusted to match screenshots
+$color-frosted-glass-bg: rgba(255, 255, 255, 0.08); // Translucent White for glass (Adjusted for better contrast/visibility)
+
+$color-success-emerald-green: #00C853; // Success messages, positive actions
+$color-warning-amber: #FFA000; // Warning, secondary alerts
+$color-info-buttons-slate-gray: #424242; // Info, secondary buttons, neutral elements
+
+$text-primary: #FFFFFF; // Main text
+$text-secondary: #CCCCCC; // Secondary text, labels
+
+// Typography
+$font-family-sans-serif: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; // Using Inter as a modern sans-serif font
+
+// Spacing
+$spacing-small: 10px;
+$spacing-medium: 20px;
+$spacing-large: 30px;
+
+// Border Radius
+$border-radius-small: 8px;
+$border-radius-medium: 12px;
+$border-radius-large: 16px;
+
+// Shadows
+$shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+$shadow-soft-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
+$shadow-deep: 0 10px 40px rgba(0, 0, 0, 0.6);
+
+// Layout
+$sidebar-width: 280px;
+$topbar-height: 80px; // Approximate height for positioning

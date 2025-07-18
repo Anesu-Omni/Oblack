@@ -1,0 +1,145 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.blacklistCard {
+  background-color: rgba($color-frosted-glass-bg, 0.05); // Lighter glass for cards
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-soft-hover;
+  }
+
+  &.glowPulse {
+    animation: glowPulse 2s infinite alternate;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 15px;
+
+    .iconWrapper {
+      background-color: rgba(#FF3B3F, 0.2);
+      border-radius: 50%;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(#FF3B3F, 0.4);
+
+      svg {
+        font-size: 2.2rem;
+      }
+
+      .iconFraud {
+        color: #FF3B3F;
+      }
+      .iconMisconduct {
+        color: $color-warning-amber;
+      }
+      .iconDefault {
+        color: $text-secondary;
+      }
+    }
+
+    .titleGroup {
+      display: flex;
+      flex-direction: column;
+
+      .employeeName {
+        margin: 0;
+        font-size: 1.3rem;
+        color: $text-primary;
+        font-weight: 600;
+      }
+
+      .employeeId {
+        font-size: 0.9rem;
+        color: $text-secondary;
+      }
+    }
+  }
+
+  .details {
+    margin-bottom: 20px;
+
+    p {
+      margin: 8px 0;
+      font-size: 1rem;
+      color: $text-secondary;
+
+      strong {
+        color: $text-primary;
+        font-weight: 500;
+        margin-right: 5px;
+      }
+
+      .reasonText {
+        color: #FF3B3F;
+        font-weight: 600;
+      }
+    }
+
+    .statusActive {
+      color: #FF3B3F;
+      font-weight: 600;
+    }
+
+    .statusRevoked {
+      color: $color-success-emerald-green;
+      font-weight: 600;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto; // Push actions to the bottom
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: $border-radius-small;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      color: $text-primary;
+    }
+
+    .revokeButton {
+      background-color: rgba(#FF3B3F, 0.8);
+      &:hover {
+        background-color: #FF3B3F;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(#FF3B3F, 0.4);
+      }
+    }
+
+    .editButton {
+      background-color: rgba($color-info-buttons-slate-gray, 0.8);
+      &:hover {
+        background-color: $color-info-buttons-slate-gray;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba($color-info-buttons-slate-gray, 0.4);
+      }
+    }
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(#FF3B3F, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(#FF3B3F, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(#FF3B3F, 0.4);
+  }
+}

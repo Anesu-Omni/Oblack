@@ -1,0 +1,85 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.employeeProfileCard {
+  background-color: rgba($color-frosted-glass-bg, 0.05); // Lighter glass for cards
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-soft-hover;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 15px;
+
+    .profileIcon {
+      font-size: 3rem;
+      color: $color-primary-accent;
+    }
+
+    .employeeName {
+      margin: 0;
+      font-size: 1.5rem;
+      color: $text-primary;
+      font-weight: 600;
+    }
+  }
+
+  .details {
+    margin-bottom: 20px;
+
+    p {
+      margin: 8px 0;
+      font-size: 1rem;
+      color: $text-secondary;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      strong {
+        color: $text-primary;
+        font-weight: 500;
+      }
+
+      .icon {
+        font-size: 1.2rem;
+        color: $color-primary-accent;
+      }
+
+      .status {
+        font-weight: 600;
+        color: $color-success-emerald-green; // Example status color
+      }
+    }
+  }
+
+  .actions {
+    margin-top: auto; // Push actions to the bottom
+    text-align: right;
+
+    .blacklistButton {
+      padding: 10px 20px;
+      border: none;
+      border-radius: $border-radius-small;
+      background-color: rgba(#FF3B3F, 0.8);
+      color: $text-primary;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+
+      &:hover {
+        background-color: #FF3B3F;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(#FF3B3F, 0.4);
+      }
+    }
+  }
+}

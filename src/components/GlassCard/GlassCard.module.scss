@@ -1,0 +1,15 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.glassCard {
+  @include glassmorphism-effect; /* Ensures the glassmorphism styling is applied */
+  padding: 20px;
+  border-radius: $border-radius-large;
+  box-shadow: $shadow-soft;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); // For Safari support
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: $text-primary;
+  display: flex;
+  flex-direction: column;
+}

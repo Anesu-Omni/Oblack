@@ -1,0 +1,158 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.sidebar {
+  @include glassmorphism-effect-dark;
+  width: $sidebar-width;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  color: $text-primary;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+
+.logoSection {
+  margin-bottom: 0px;
+  text-align: center;
+
+  .logoImage {
+    width: 250px; // Adjust as needed
+    height: auto;
+    margin-bottom: 50px;
+  }
+}
+
+
+  .navigation {
+    flex-grow: 1;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 10px;
+
+        a {
+          display: flex;
+          align-items: center;
+          padding: 12px 15px;
+          border-radius: $border-radius-small;
+          color: $text-secondary;
+          text-decoration: none;
+          font-weight: 500;
+          transition: background-color 0.3s ease, color 0.3s ease;
+
+          &:hover {
+            background-color: rgba($color-frosted-glass-bg, 0.1);
+            color: $text-primary;
+          }
+
+          &.active {
+            background-color: rgba($color-primary-accent, 0.2);
+            color: $color-primary-accent;
+            box-shadow: 0 0 10px rgba($color-primary-accent, 0.3);
+          }
+
+          svg {
+            margin-right: 15px;
+            font-size: 1.5rem;
+          }
+
+          span {
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .subsidiarySwitcher {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+    .switcherTitle {
+      font-size: 0.9rem;
+      color: $text-secondary;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .subsidiaryList {
+      list-style: none;
+      padding: 0;
+
+      .subsidiaryItem {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        margin-bottom: 8px;
+        border-radius: $border-radius-small;
+        color: $text-secondary;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+
+        &:hover {
+          background-color: rgba($color-frosted-glass-bg, 0.1);
+          color: $text-primary;
+        }
+
+        &.activeSubsidiary {
+          background-color: rgba(gray, 0.3);
+          color: $text-primary;
+          border: 1px solid gray;
+        }
+
+        .subsidiaryLogo {
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+        }
+
+        span {
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+
+  .roleSwitcher {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+    h4 {
+      margin-bottom: 10px;
+      color: $text-secondary;
+      font-size: 0.9rem;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: $border-radius-small;
+      background-color: rgba($color-frosted-glass-bg, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: $text-primary;
+      font-size: 0.9rem;
+      outline: none;
+      cursor: pointer;
+
+      &:focus {
+        border-color: $color-primary-accent;
+        box-shadow: 0 0 5px rgba($color-primary-accent, 0.5);
+      }
+
+      option {
+        background-color: $color-background;
+        color: $text-primary;
+      }
+    }
+  }
+}

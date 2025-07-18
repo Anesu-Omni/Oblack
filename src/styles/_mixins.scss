@@ -1,0 +1,61 @@
+@import 'variables';
+
+// Glassmorphism Effect for lighter cards
+@mixin glassmorphism-effect {
+  background-color: $color-frosted-glass-bg;
+  border-radius: $border-radius-medium;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); // For Safari
+  box-shadow: $shadow-soft;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+// Glassmorphism Effect for darker sidebar/panels
+@mixin glassmorphism-effect-dark {
+  background-color: rgba($color-frosted-glass-bg, 0.03); // More subtle for darker areas
+  border-radius: $border-radius-medium;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px); // For Safari
+  box-shadow: $shadow-deep;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+// Animations
+@mixin fade-in($duration: 0.3s, $delay: 0s) {
+  animation: fadeIn $duration ease-out $delay forwards;
+}
+
+@mixin slide-in-top($duration: 0.4s, $delay: 0s) {
+  animation: slideInTop $duration cubic-bezier(0.25, 0.46, 0.45, 0.94) $delay forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInTop {
+  from {
+    transform: translateY(-50px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+// Responsive breakpoints (example, adjust as needed)
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == desktop {
+    @media (min-width: 1025px) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 768px) and (max-width: 1024px) { @content; }
+  } @else if $breakpoint == mobile {
+    @media (max-width: 767px) { @content; }
+  }
+}

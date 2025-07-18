@@ -1,0 +1,761 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.dashboard {
+  padding: 20px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.searchActionsBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.searchContainer {
+  position: relative;
+  flex-grow: 1;
+  max-width: 500px;
+
+  .searchIcon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $text-secondary;
+    opacity: 0.7;
+  }
+
+  .searchInput {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border-radius: 8px;
+    border: 1px solid rgba($text-secondary, 0.2);
+    background-color: rgba($color-frosted-glass-bg, 0.05);
+    color: $text-primary;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $color-primary-accent;
+      box-shadow: 0 0 0 2px rgba($color-primary-accent, 0.2);
+    }
+  }
+}
+
+.quickActions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: rgba($color-primary-accent, 0.1);
+  color: $color-primary-accent;
+  border: 1px solid rgba($color-primary-accent, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  &:hover {
+    background-color: rgba($color-primary-accent, 0.2);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid rgba($text-secondary, 0.1);
+  margin-bottom: 25px;
+}
+
+.tab {
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: $text-secondary;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: $text-primary;
+  }
+
+  &.active {
+    color: $color-primary-accent;
+    border-bottom-color: $color-primary-accent;
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.statCard {
+  background-color: rgba($color-frosted-glass-bg, 0.08);
+  padding: 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &.critical {
+    border-top: 4px solid #FF3B3F;
+  }
+
+  &.warning {
+    border-top: 4px solid #FF9500;
+  }
+
+  &.alert {
+    border-top: 4px solid #FFCC00;
+  }
+
+  &.success {
+    border-top: 4px solid #4CD964;
+  }
+
+  .statIcon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    opacity: 0.8;
+  }
+
+  .statValue {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: $text-primary;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .statLabel {
+    font-size: 1.1rem;
+    color: $text-secondary;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 500;
+  }
+
+  .statTrend {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: $text-secondary;
+  }
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.8rem;
+  color: $text-primary;
+  margin-top: 40px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgba($text-secondary, 0.1);
+  padding-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.sectionSubtitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  color: $text-primary;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.sectionIcon {
+  color: $color-primary-accent;
+  font-size: 1.8rem;
+}
+
+.alertsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.alertCard {
+  padding: 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  text-align: left;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  &.new {
+    border-left: 4px solid #FF3B3F;
+  }
+
+  &.deadline {
+    border-left: 4px solid #FF9500;
+  }
+
+  &.document {
+    border-left: 4px solid #FFCC00;
+  }
+
+  &.rehire {
+    border-left: 4px solid #5856D6;
+  }
+
+  .alertHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .alertIcon {
+    font-size: 1.5rem;
+  }
+
+  .alertTitle {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .alertMessage {
+    margin: 0 0 15px;
+    color: $text-secondary;
+    line-height: 1.5;
+  }
+
+  .alertFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .alertDate {
+    font-size: 0.85rem;
+    color: rgba($text-secondary, 0.7);
+  }
+
+  .alertAction {
+    background: none;
+    border: none;
+    color: $color-primary-accent;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba($color-primary-accent, 0.1);
+    }
+  }
+}
+
+.spotlightGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.spotlightCard {
+  padding: 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .spotlightHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .spotlightImage {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: $color-primary-accent;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .spotlightTitle {
+    flex: 1;
+
+    h4 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+  }
+
+  .riskBadge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 5px;
+
+    &.high {
+      background-color: rgba(#FF3B3F, 0.1);
+      color: #FF3B3F;
+    }
+
+    &.medium {
+      background-color: rgba(#FF9500, 0.1);
+      color: #FF9500;
+    }
+
+    &.low {
+      background-color: rgba(#4CD964, 0.1);
+      color: #4CD964;
+    }
+  }
+
+  .spotlightContent {
+    p {
+      margin: 0 0 10px;
+      font-size: 0.95rem;
+      color: $text-secondary;
+
+      strong {
+        color: $text-primary;
+      }
+    }
+  }
+
+  .spotlightFooter {
+    margin-top: 20px;
+  }
+
+  .spotlightButton {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba($color-primary-accent, 0.1);
+    color: $color-primary-accent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background-color: rgba($color-primary-accent, 0.2);
+    }
+  }
+}
+
+.recentActivity {
+  background-color: rgba($color-frosted-glass-bg, 0.08);
+  padding: 30px;
+  border-radius: 12px;
+
+  .activityList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .activityItem {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba($text-secondary, 0.08);
+      color: $text-secondary;
+      font-size: 1rem;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .activityName {
+        font-weight: 600;
+        color: $text-primary;
+        flex-basis: 25%;
+      }
+
+      .activityReason {
+        flex-basis: 35%;
+        font-style: italic;
+      }
+
+      .activityDate {
+        flex-basis: 20%;
+        text-align: right;
+      }
+
+      .activitySubsidiary {
+        flex-basis: 10%;
+        text-align: right;
+        font-size: 0.85rem;
+        color: rgba($text-secondary, 0.7);
+      }
+
+      .activityStatus {
+        flex-basis: 10%;
+        text-align: right;
+        font-size: 0.85rem;
+        padding: 3px 8px;
+        border-radius: 12px;
+        font-weight: 500;
+
+        &.active {
+          background-color: rgba(#FF3B3F, 0.1);
+          color: #FF3B3F;
+        }
+
+        &.under-review {
+          background-color: rgba(#FF9500, 0.1);
+          color: #FF9500;
+        }
+
+        &.expired {
+          background-color: rgba(#C7C7CC, 0.1);
+          color: #C7C7CC;
+        }
+      }
+    }
+  }
+
+  .noData {
+    text-align: center;
+    color: $text-secondary;
+    font-style: italic;
+    padding: 20px 0;
+  }
+}
+
+.subsidiaryStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+
+  .subStatCard {
+    background-color: rgba($color-frosted-glass-bg, 0.05);
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+
+    .subStatName {
+      font-size: 1.4rem;
+      color: $color-primary-accent;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 8px 0;
+      font-size: 1rem;
+      color: $text-secondary;
+
+      span {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .subStatValue {
+        color: $text-primary;
+      }
+      .subStatValueRed {
+        color: #FF3B3F;
+      }
+    }
+  }
+
+  .subStatTrend {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: $text-secondary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+}
+
+.analyticsTab {
+  .chartGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+  }
+
+  .chartCard {
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+
+    .chartTitle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: $text-primary;
+      font-size: 1.2rem;
+
+      .chartIcon {
+        color: $color-primary-accent;
+      }
+    }
+  }
+}
+
+.complianceTab {
+  .complianceGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+  }
+
+  .complianceCard {
+    padding: 25px;
+    border-radius: 12px;
+
+    .complianceTitle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: $text-primary;
+      font-size: 1.2rem;
+
+      .complianceIcon {
+        color: $color-primary-accent;
+      }
+    }
+
+    .complianceScore {
+      text-align: center;
+      margin-bottom: 25px;
+
+      .scoreCircle {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: conic-gradient($color-primary-accent 88%, rgba($color-primary-accent, 0.1) 0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: $text-primary;
+      }
+
+      p {
+        color: $text-secondary;
+        margin: 0;
+      }
+    }
+
+    .complianceList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .complianceItem {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba($text-secondary, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: $text-secondary;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .complianceCheck {
+          color: #4CD964;
+          font-weight: bold;
+        }
+
+        .complianceWarning {
+          color: #FF9500;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .heatMap {
+    .heatMapPlaceholder {
+      background-color: rgba($color-frosted-glass-bg, 0.05);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .heatMapKey {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+
+      span {
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: 500;
+
+        &.low {
+          background-color: rgba(#4CD964, 0.1);
+          color: #4CD964;
+        }
+
+        &.medium {
+          background-color: rgba(#FF9500, 0.1);
+          color: #FF9500;
+        }
+
+        &.high {
+          background-color: rgba(#FF3B3F, 0.1);
+          color: #FF3B3F;
+        }
+      }
+    }
+
+    .heatMapImage {
+      color: $text-secondary;
+      font-style: italic;
+    }
+  }
+
+  .auditLog {
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+
+    .auditLogHeader {
+      display: flex;
+      background-color: rgba($color-frosted-glass-bg, 0.1);
+      padding: 15px 20px;
+      font-weight: 600;
+      color: $text-primary;
+      border-bottom: 1px solid rgba($text-secondary, 0.1);
+    }
+
+    .auditLogContent {
+      .auditLogItem {
+        display: flex;
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba($text-secondary, 0.05);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          background-color: rgba($color-frosted-glass-bg, 0.03);
+        }
+      }
+    }
+
+    .auditLogColumn {
+      flex: 1;
+      font-size: 0.9rem;
+      color: $text-secondary;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .searchActionsBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quickActions {
+    justify-content: center;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .activityItem {
+    flex-wrap: wrap;
+
+    .activityName,
+    .activityReason,
+    .activityDate,
+    .activitySubsidiary,
+    .activityStatus {
+      flex-basis: auto !important;
+      width: 100%;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 5px;
+  }
+}
